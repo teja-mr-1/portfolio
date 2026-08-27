@@ -79,7 +79,7 @@ export default function Home() {
               </div>
 
               <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
-                Computer Science student at DTU focusing on <span className="font-bold text-blue-600">machine learning</span>, <span className="font-bold text-blue-600">multi-agent systems</span>, and <span className="font-bold text-blue-600">software engineering</span>.
+                Computer Science student at DTU focusing on specializations in <span className="font-bold text-blue-600">Artificial Intelligence</span>, <span className="font-bold text-blue-600">Machine Learning</span>, and <span className="font-bold text-blue-600">Data Science</span>.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
