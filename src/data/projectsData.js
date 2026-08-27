@@ -3,7 +3,7 @@ export const projectsData = [
   {
     id: 1,
     title: "Sparse MoE-QLoRA for Danish Legal QA",
-    shortDescription: "A study using 4-bit Quantized Low-Rank Adaptation (QLoRA), Sparse Mixture-of-Experts (MoE) routing, and Retrieval-Augmented Generation (RAG) to answer Danish legal questions on a single GPU.",
+    shortDescription: "An AI assistant that answers questions about Danish law accurately using smart document search, running efficiently on a single computer graphics card.",
     course: "Personal Project",
     semester: "MSc at DTU",
     problemStatement: "Fine-tuning large 7-billion parameter models needs big GPU resources. Also, general AI models often lack specialized Danish legal knowledge and can give incorrect answers. This project tests if Sparse Mixture-of-Experts with QLoRA can run efficiently on a single T4 GPU for Danish legal question answering.",
@@ -14,7 +14,7 @@ export const projectsData = [
   {
     id: 2,
     title: "Multi-Agent Coordination in Hospital Domain",
-    shortDescription: "A multi-agent solver for the MAvis Hospital Domain using priority ordering, three-phase coordination, and Conflict-Based Search (CBS) to move agents and boxes safely.",
+    shortDescription: "An intelligent coordination system where multiple autonomous robots work together to move packages to target locations without bumping into each other.",
     course: "AI and Multi-Agent Systems (02285)",
     semester: "Spring 2026, DTU",
     problemStatement: "Built a multi-agent AI client for the MAvis server in the Hospital Domain. Multiple agents must work together to move boxes to goal locations without collisions or deadlocks within 3 minutes and 20,000 joint actions.",
@@ -25,7 +25,7 @@ export const projectsData = [
   {
     id: 3,
     title: "Multi-Modal Clinical Phenotyping System",
-    shortDescription: "A deep learning model that predicts 25 health conditions from MIMIC-IV hospital data by combining clinical doctor notes and lab test results.",
+    shortDescription: "An AI system for healthcare that reads doctor notes and laboratory test results to predict 25 different health conditions for hospital patients.",
     course: "Personal Project",
     semester: "MSc at DTU",
     problemStatement: "Hospital records contain both free-text doctor notes and numerical lab test results. Predicting diseases requires combining these two different types of data while handling missing lab values. The goal is to build an end-to-end model to predict 25 health conditions from MIMIC-IV patient records.",
