@@ -15,13 +15,12 @@ export const projectsData = [
   {
     id: 2,
     title: "Weather-Aware Route Planner & Travel Advisor",
-    shortDescription: "A web application that combines interactive map routing with real-time weather forecasts along journey waypoints and AI travel advice.",
+    shortDescription: "A web application that combines interactive map routing with real-time weather forecasts along journey waypoints and planned AI travel advice.",
     course: "Personal Project",
     semester: "MSc at DTU",
     problemStatement: "Travelers and commuters need to know weather conditions along their route, not just at their destination. This project builds an interactive map tool that samples weather forecasts along planned trip waypoints.",
-    contribution: "Built a web application using JavaScript, Leaflet.js, and Mapbox for interactive route mapping. Integrated OpenWeatherMap APIs to fetch weather data along route coordinates. Implemented an AI travel advisor for safety suggestions and Netlify proxy functions for secure API handling.",
+    contribution: "Built a web application using JavaScript, Leaflet.js, and Mapbox for interactive route mapping. Integrated OpenWeatherMap APIs to sample weather forecasts along route waypoints. Designed with Netlify proxy functions for secure API key handling. Planned roadmap includes integrating an LLM / AI API service to provide automated weather safety verdicts and travel advice along the route.",
     technologies: ["JavaScript", "HTML5", "CSS3", "Leaflet.js", "Mapbox", "OpenWeatherMap API", "Node.js", "Netlify"],
-    githubUrl: "https://github.com/teja-mr-1/weather-route-map",
   },
   {
     id: 3,
