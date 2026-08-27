@@ -23,13 +23,24 @@ export default function Home() {
             <div className="text-2xl font-black text-blue-600 hover:text-blue-700 transition cursor-pointer">
               Teja
             </div>
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-2">
               <a href="#projects" className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-sm transition-all">
                 Projects
               </a>
+              <a
+                href="/Maddela_Raviteja_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-sm transition-all flex items-center gap-1.5"
+              >
+                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download CV
+              </a>
               <button 
                 onClick={() => setIsContactOpen(true)}
-                className="ml-4 px-6 py-2.5 bg-blue-600 text-white font-bold text-sm rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                className="ml-2 px-6 py-2.5 bg-blue-600 text-white font-bold text-sm rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 Hire Me
               </button>
@@ -78,12 +89,17 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </a>
-                <button 
-                  onClick={() => setIsContactOpen(true)}
-                  className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-bold rounded-xl hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
+                <a 
+                  href="/Maddela_Raviteja_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-bold rounded-xl hover:bg-blue-50 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center flex items-center justify-center gap-2"
                 >
-                  Get in Touch
-                </button>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download CV
+                </a>
               </div>
             </div>
 
@@ -171,16 +187,27 @@ export default function Home() {
           <p className="text-xl lg:text-2xl text-blue-100 font-medium leading-relaxed max-w-2xl mx-auto">
             You can send me a message about AI research, multi-agent projects, or work opportunities.
           </p>
-          <div className="pt-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button 
               onClick={() => setIsContactOpen(true)}
-              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-blue-600 font-bold text-lg rounded-xl hover:bg-gray-50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-600 font-bold text-base rounded-xl hover:bg-gray-50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               s252744@student.dtu.dk
             </button>
+            <a 
+              href="/Maddela_Raviteja_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-blue-800 text-white font-bold text-base rounded-xl border border-blue-400/40 hover:bg-blue-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download CV
+            </a>
           </div>
         </div>
       </section>
@@ -202,6 +229,10 @@ export default function Home() {
                 <li><a href="#projects" className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-3 transition-all"></span>
                   Projects
+                </a></li>
+                <li><a href="/Maddela_Raviteja_CV.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-3 transition-all"></span>
+                  Download CV
                 </a></li>
                 <li><button onClick={() => setIsContactOpen(true)} className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-3 transition-all"></span>
