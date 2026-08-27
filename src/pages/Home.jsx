@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
+import ContactModal from '../components/ContactModal';
 import { projectsData } from '../data/projectsData';
 
 export default function Home() {
   const navigate = useNavigate();
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   const handleViewProject = (projectId) => {
     navigate(`/project/${projectId}`);
@@ -11,6 +14,8 @@ export default function Home() {
 
   return (
     <main className="w-full overflow-x-hidden bg-white">
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -22,12 +27,12 @@ export default function Home() {
               <a href="#projects" className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-sm transition-all">
                 Projects
               </a>
-              <a href="#contact" className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-sm transition-all">
-                Contact
-              </a>
-              <a href="#contact" className="ml-4 px-6 py-2.5 bg-blue-600 text-white font-bold text-sm rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+              <button 
+                onClick={() => setIsContactOpen(true)}
+                className="ml-4 px-6 py-2.5 bg-blue-600 text-white font-bold text-sm rounded-lg hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+              >
                 Hire Me
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -35,7 +40,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative w-full bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-24 lg:py-32 px-6 lg:px-8 overflow-hidden">
-        {/* Decorative background elements */}
         <div className="absolute top-20 right-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
         
@@ -53,7 +57,7 @@ export default function Home() {
                   Hi, I'm <span className="text-blue-600">Teja</span>
                 </h1>
                 <p className="text-xl lg:text-2xl font-bold text-blue-600">
-                  MSc Computer Science & Engineering
+                  MSc Computer Science student
                 </p>
                 <p className="text-base lg:text-lg text-gray-600 font-semibold flex items-center gap-2">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -64,7 +68,7 @@ export default function Home() {
               </div>
 
               <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
-                Full-stack engineer specialized in <span className="font-bold text-blue-600">distributed systems</span>, <span className="font-bold text-blue-600">machine learning</span>, and <span className="font-bold text-blue-600">scalable architecture</span>. Building innovative solutions that drive technology forward.
+                Computer Science student at DTU focusing on <span className="font-bold text-blue-600">machine learning</span>, <span className="font-bold text-blue-600">multi-agent systems</span>, and <span className="font-bold text-blue-600">software engineering</span>.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -74,24 +78,35 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </a>
-                <a href="#contact" className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-bold rounded-xl hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center">
+                <button 
+                  onClick={() => setIsContactOpen(true)}
+                  className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-bold rounded-xl hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center"
+                >
                   Get in Touch
-                </a>
+                </button>
               </div>
             </div>
 
             <div className="w-full relative flex items-center justify-center lg:justify-end animate-fadeInUp animation-delay-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-300 to-indigo-300 rounded-3xl opacity-20 blur-3xl animate-pulse"></div>
-              <div className="relative bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl p-12 w-full max-w-md aspect-square flex flex-col items-center justify-center shadow-2xl border border-blue-400/30">
-                <div className="absolute inset-0 bg-white/10 rounded-3xl backdrop-blur-sm"></div>
-                <svg className="relative w-36 h-36 text-white mb-6 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <p className="relative text-white font-black text-center text-xl drop-shadow-lg">Engineering Excellence</p>
-                <div className="relative mt-4 flex gap-2">
-                  <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                  <span className="w-2 h-2 bg-white rounded-full animate-pulse animation-delay-200"></span>
-                  <span className="w-2 h-2 bg-white rounded-full animate-pulse animation-delay-400"></span>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-3xl opacity-20 blur-3xl animate-pulse"></div>
+              
+              <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-3 w-full max-w-sm aspect-[4/5] flex flex-col justify-end shadow-2xl border border-blue-400/30 overflow-hidden group hover:scale-[1.02] transition-all duration-300">
+                <img 
+                  src="/profile.jpg" 
+                  alt="Teja" 
+                  className="absolute inset-0 w-full h-full object-cover object-center rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                />
+
+                <div className="relative z-10 p-3.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg self-start">
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span className="text-[11px] font-extrabold text-emerald-300 uppercase tracking-widest">
+                      Available for Opportunities
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -103,16 +118,16 @@ export default function Home() {
       <section className="w-full bg-white py-20 lg:py-28 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-4">Core Expertise</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Specialized skills across the full technology stack</p>
+            <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-4">Core Skills</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Practical skills in AI research, multi-agent systems, and web development</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: 'Backend', skills: 'Python, Node.js, Distributed Systems', icon: '⚙️', color: 'from-blue-500 to-cyan-500' },
-              { title: 'Frontend', skills: 'React, TypeScript, Tailwind CSS', icon: '🎨', color: 'from-purple-500 to-pink-500' },
-              { title: 'ML/AI', skills: 'TensorFlow, PyTorch, Data Science', icon: '🧠', color: 'from-green-500 to-emerald-500' },
-              { title: 'DevOps', skills: 'Docker, Kubernetes, Cloud Arch', icon: '☁️', color: 'from-orange-500 to-red-500' }
+              { title: 'AI & ML Systems', skills: 'PyTorch, QLoRA, RAG, LLM Agents', icon: '🧠', color: 'from-blue-500 to-cyan-500' },
+              { title: 'Backend & Logic', skills: 'Python, Java, FastAPI, Algorithms', icon: '⚙️', color: 'from-green-500 to-emerald-500' },
+              { title: 'Web Development', skills: 'React, JavaScript, Tailwind CSS, Gradio', icon: '🎨', color: 'from-purple-500 to-pink-500' },
+              { title: 'Tools & Workflow', skills: 'Docker, Git, Linux, Kaggle, HuggingFace', icon: '🛠️', color: 'from-orange-500 to-red-500' }
             ].map((expertise, idx) => (
               <div key={idx} className="group bg-white p-8 rounded-2xl border-2 border-gray-200 hover:border-transparent hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${expertise.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
@@ -133,7 +148,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-6xl font-black text-gray-900 mb-6">Featured Projects</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              DTU Group Projects showcasing expertise in cutting-edge technologies and innovative problem-solving. Each project demonstrates real-world engineering challenges and creative solutions.
+              Projects in AI, machine learning, multi-agent systems, and software engineering.
             </p>
           </div>
 
@@ -151,21 +166,21 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto text-center relative space-y-8">
           <h2 className="text-4xl lg:text-6xl font-black text-white leading-tight">
-            Ready to Collaborate?
+            Get in Touch
           </h2>
           <p className="text-xl lg:text-2xl text-blue-100 font-medium leading-relaxed max-w-2xl mx-auto">
-            Let's discuss how I can contribute to your team and drive innovation forward. I'm always excited to explore new opportunities and tackle challenging problems.
+            You can send me a message about AI research, multi-agent projects, or work opportunities.
           </p>
           <div className="pt-4">
-            <a 
-              href="mailto:teja@example.com" 
+            <button 
+              onClick={() => setIsContactOpen(true)}
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-blue-600 font-bold text-lg rounded-xl hover:bg-gray-50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              Contact Me Now
-            </a>
+              s252744@student.dtu.dk
+            </button>
           </div>
         </div>
       </section>
@@ -177,7 +192,7 @@ export default function Home() {
             <div className="space-y-4 lg:col-span-1">
               <h3 className="text-white font-black text-3xl mb-4">Teja</h3>
               <p className="text-gray-400 leading-relaxed">
-                Full-stack engineer crafting innovative solutions for complex problems.
+                MSc Computer Science student at Technical University of Denmark.
               </p>
             </div>
             
@@ -188,10 +203,10 @@ export default function Home() {
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-3 transition-all"></span>
                   Projects
                 </a></li>
-                <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2 group">
+                <li><button onClick={() => setIsContactOpen(true)} className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-3 transition-all"></span>
                   Contact
-                </a></li>
+                </button></li>
               </ul>
             </div>
             
@@ -207,8 +222,10 @@ export default function Home() {
               <h4 className="text-white font-bold text-sm tracking-widest mb-6 uppercase">Contact</h4>
               <div className="space-y-4">
                 <div>
-                  <p className="text-white font-bold mb-1 text-sm">Email</p>
-                  <a href="mailto:teja@example.com" className="text-gray-400 hover:text-white transition-colors text-sm">teja@example.com</a>
+                  <p className="text-white font-bold mb-1 text-sm">DTU Email</p>
+                  <button onClick={() => setIsContactOpen(true)} className="text-gray-400 hover:text-white transition-colors text-sm font-semibold text-left">
+                    s252744@student.dtu.dk
+                  </button>
                 </div>
                 <div>
                   <p className="text-white font-bold mb-1 text-sm">Location</p>
@@ -220,7 +237,7 @@ export default function Home() {
 
           <div className="border-t border-gray-800 pt-8 mt-8">
             <p className="text-center text-gray-500 text-sm">
-              © 2024 Teja. All rights reserved. Crafted with precision and passion.
+              © 2024 Teja. All rights reserved.
             </p>
           </div>
         </div>
