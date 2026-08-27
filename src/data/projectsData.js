@@ -20,7 +20,7 @@ export const projectsData = [
     problemStatement: "Built a multi-agent AI client for the MAvis server in the Hospital Domain. Multiple agents must work together to move boxes to goal locations without collisions or deadlocks within 3 minutes and 20,000 joint actions.",
     contribution: "Designed a multi-stage solver named CudBSlvd. First, it tries fast priority orderings (independent, hardest-first, easiest-first, random) using BFS distance tables and Hungarian matching. If paths collide, it uses three-phase coordination to move blocking boxes to holding cells. Finally, it uses a 6-step CBS repair loop to resolve remaining conflicts. Solved 25 of 69 competition levels and won best solution on our team's custom level.",
     technologies: ["Java", "A*", "CBS", "BFS", "Hungarian Matching", "CAT", "MAvis Server", "Multi-Agent Path Finding"],
-    githubUrl: "https://github.com/teja-mr-1",
+    githubUrl: "https://github.com/teja-mr-1/multi-agent-hospital-domain-solver",
   },
   {
     id: 3,
