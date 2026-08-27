@@ -19,7 +19,7 @@ export const projectsData = [
     course: "AI and Multi-Agent Systems (02285)",
     semester: "Spring 2026, DTU",
     problemStatement: "A course assignment for AI and Multi-Agent Systems. Simulated agents must plan collision-free paths to move colored boxes to target locations within time and action limits.",
-    contribution: "Built a solver in Java called CudBSlvd. It uses greedy priority orderings first, followed by three-phase box staging and Conflict-Based Search (CBS) with bypass heuristics to resolve remaining path collisions. Solved 25 of 69 benchmark levels.",
+    contribution: "Built a multi-agent path finding solver in Java. It uses greedy priority orderings first, followed by three-phase box staging and Conflict-Based Search (CBS) with bypass heuristics to resolve path collisions on benchmark levels.",
     technologies: ["Java", "A*", "CBS", "BFS", "Hungarian Matching", "CAT", "MAvis Server", "Multi-Agent Path Finding"],
     videoUrl: "https://www.youtube.com/embed/gggOOE8wj0U",
     githubUrl: "https://github.com/teja-mr-1/multi-agent-hospital-domain-solver",
