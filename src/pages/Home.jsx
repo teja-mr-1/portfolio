@@ -28,7 +28,7 @@ export default function Home() {
                 Projects
               </a>
               <a
-                href="/Maddela_Raviteja_CV.pdf"
+                href="./Maddela_Raviteja_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-sm transition-all flex items-center gap-1.5"
@@ -90,7 +90,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a 
-                  href="/Maddela_Raviteja_CV.pdf"
+                  href="./Maddela_Raviteja_CV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-bold rounded-xl hover:bg-blue-50 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 text-center flex items-center justify-center gap-2"
@@ -108,7 +108,7 @@ export default function Home() {
               
               <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-3 w-full max-w-sm aspect-[4/5] flex flex-col justify-end shadow-2xl border border-blue-400/30 overflow-hidden group hover:scale-[1.02] transition-all duration-300">
                 <img 
-                  src="/profile.jpg" 
+                  src="./profile.jpg" 
                   alt="Teja" 
                   className="absolute inset-0 w-full h-full object-cover object-center rounded-2xl group-hover:scale-105 transition-transform duration-500"
                 />
@@ -198,7 +198,7 @@ export default function Home() {
               s252744@student.dtu.dk
             </button>
             <a 
-              href="/Maddela_Raviteja_CV.pdf"
+              href="./Maddela_Raviteja_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 bg-blue-800 text-white font-bold text-base rounded-xl border border-blue-400/40 hover:bg-blue-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200"
@@ -230,7 +230,7 @@ export default function Home() {
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-3 transition-all"></span>
                   Projects
                 </a></li>
-                <li><a href="/Maddela_Raviteja_CV.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2 group">
+                <li><a href="./Maddela_Raviteja_CV.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-3 transition-all"></span>
                   Download CV
                 </a></li>
