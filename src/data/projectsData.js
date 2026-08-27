@@ -21,6 +21,7 @@ export const projectsData = [
     problemStatement: "Travelers and commuters need to know weather conditions along their route, not just at their destination. This project builds an interactive map tool that samples weather forecasts along planned trip waypoints.",
     contribution: "Built a web application using JavaScript, Leaflet.js, and Mapbox for interactive route mapping. Integrated OpenWeatherMap APIs to sample weather forecasts along route waypoints. Designed with Netlify proxy functions for secure API key handling. Planned roadmap includes integrating an LLM / AI API service to provide automated weather safety verdicts and travel advice along the route.",
     technologies: ["JavaScript", "HTML5", "CSS3", "Leaflet.js", "Mapbox", "OpenWeatherMap API", "Node.js", "Netlify"],
+    videoUrl: "https://www.youtube.com/embed/6IlHpKIfEec",
   },
   {
     id: 3,
