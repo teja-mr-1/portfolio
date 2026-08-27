@@ -25,6 +25,18 @@ export const projectsData = [
   },
   {
     id: 3,
+    title: "Multi-Agent Coordination in Hospital Domain",
+    shortDescription: "A grid-world path planning algorithm developed for a DTU course, coordinating simulated agents to move boxes to target goals without collisions.",
+    course: "AI and Multi-Agent Systems (02285)",
+    semester: "Spring 2026, DTU",
+    problemStatement: "A course assignment for AI and Multi-Agent Systems. Simulated agents must plan collision-free paths to move colored boxes to target locations within time and action limits.",
+    contribution: "Built a multi-agent path finding solver in Java. It uses greedy priority orderings first, followed by three-phase box staging and Conflict-Based Search (CBS) with bypass heuristics to resolve path collisions on benchmark levels.",
+    technologies: ["Java", "A*", "CBS", "BFS", "Hungarian Matching", "CAT", "MAvis Server", "Multi-Agent Path Finding"],
+    videoUrl: "https://www.youtube.com/embed/gggOOE8wj0U",
+    githubUrl: "https://github.com/teja-mr-1/multi-agent-hospital-domain-solver",
+  },
+  {
+    id: 4,
     title: "Multi-Modal Clinical Phenotyping System",
     shortDescription: "A machine learning project testing multimodal fusion between doctor notes and laboratory test features on the MIMIC-IV medical dataset.",
     course: "Personal Project",
