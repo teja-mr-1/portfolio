@@ -9,6 +9,7 @@ export const projectsData = [
     problemStatement: "Fine-tuning a 7-billion parameter language model requires large GPU memory. General AI models also lack specific Danish legal context. This project explores if 4-bit QLoRA and Sparse Mixture-of-Experts can run efficiently on a single T4 GPU.",
     contribution: "Built a research prototype using 4-bit QLoRA to fine-tune a 7B model with 3 expert adapters. Used E5 text embeddings for routing and document retrieval. Tested memory pre-caching and in-place tensor swapping to keep adapter switching fast on a single GPU.",
     technologies: ["Python", "PyTorch", "QLoRA", "PEFT", "Transformers", "RAG", "FAISS", "Gradio", "Kaggle T4", "K-Means", "E5 Encoder"],
+    videoUrl: "https://www.youtube.com/embed/WcsLH-RIy-Y",
     githubUrl: "https://github.com/teja-mr-1/sparse-moe-qlora-danish-legal-qa",
   },
   {
@@ -20,6 +21,7 @@ export const projectsData = [
     problemStatement: "A course assignment for AI and Multi-Agent Systems. Simulated agents must plan collision-free paths to move colored boxes to target locations within time and action limits.",
     contribution: "Built a solver in Java called CudBSlvd. It uses greedy priority orderings first, followed by three-phase box staging and Conflict-Based Search (CBS) with bypass heuristics to resolve remaining path collisions. Solved 25 of 69 benchmark levels.",
     technologies: ["Java", "A*", "CBS", "BFS", "Hungarian Matching", "CAT", "MAvis Server", "Multi-Agent Path Finding"],
+    videoUrl: "https://www.youtube.com/embed/gggOOE8wj0U",
     githubUrl: "https://github.com/teja-mr-1/multi-agent-hospital-domain-solver",
   },
   {
