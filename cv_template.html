@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  @page {
+    size: A4;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1e293b;
+    background: #ffffff;
+    font-size: 9.5pt;
+    line-height: 1.4;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+
+  .name {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .title-sub {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: #2563eb;
+    margin-top: 3px;
+  }
+
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 8.5pt;
+    color: #475569;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .contact-item a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  /* Section Styling */
+  .section {
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #0f172a;
+    border-bottom: 1.5px solid #e2e8f0;
+    padding-bottom: 2px;
+    margin-bottom: 6px;
+  }
+
+  /* Entry item */
+  .item {
+    margin-bottom: 8px;
+    page-break-inside: avoid;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .item-title {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .item-subtitle {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: #2563eb;
+  }
+
+  .item-date {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: #64748b;
+  }
+
+  .item-location {
+    font-size: 8pt;
+    color: #64748b;
+    font-style: italic;
+  }
+
+  ul.bullets {
+    list-style-type: disc;
+    margin-left: 14px;
+    margin-top: 2px;
+  }
+
+  ul.bullets li {
+    font-size: 8.5pt;
+    color: #334155;
+    margin-bottom: 2px;
+    line-height: 1.35;
+  }
+
+  ul.bullets li strong {
+    color: #0f172a;
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 4px 10px;
+    font-size: 8.5pt;
+  }
+
+  .skill-cat {
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .skill-list {
+    color: #334155;
+  }
+
+  .badge {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 0px 5px;
+    border-radius: 4px;
+    margin-left: 4px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="name">RAVITEJA MADDELA</div>
+    <div class="title-sub">MSc Computer Science & Engineering Student &nbsp;|&nbsp; Ex-Software Developer (6+ Yrs Exp)</div>
+    <div class="contact-bar">
+      <div class="contact-item">📍 Copenhagen, Denmark</div>
+      <div class="contact-item">📞 +45 71806856</div>
+      <div class="contact-item">✉️ <a href="mailto:s252744@student.dtu.dk">s252744@student.dtu.dk</a></div>
+      <div class="contact-item">✉️ <a href="mailto:tejamaddela9@gmail.com">tejamaddela9@gmail.com</a></div>
+      <div class="contact-item">🔗 <a href="https://github.com/teja-mr-1">github.com/teja-mr-1</a></div>
+      <div class="contact-item">💼 <a href="https://linkedin.com/in/raviteja-m-33a413263">linkedin.com/in/raviteja-m-33a413263</a></div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <p style="font-size: 8.5pt; color: #334155; line-height: 1.4;">
+      MSc Computer Science student at the Technical University of Denmark (DTU) with 6+ years of industry experience as a Software Developer across healthcare, fintech, and banking domains (GE Healthcare, Swiss Re, American Express). Specializing in Machine Learning systems, Multi-Agent pathfinding, and scalable backend infrastructure using PyTorch, Java, and Python.
+    </p>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">Technical University of Denmark (DTU)</div>
+        <div class="item-date">2025 – Present</div>
+      </div>
+      <div class="item-subtitle">Master of Science in Computer Science & Engineering &nbsp;<span class="item-location">(Copenhagen, Denmark)</span></div>
+      <div style="font-size: 8.2pt; color: #475569; margin-top: 1px;">
+        Key Focus: Machine Learning Systems, Multi-Agent Systems, Algorithm Engineering, Distributed Systems. Student ID: s252744.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">RVR & JC College of Engineering (Acharya Nagarjuna University)</div>
+        <div class="item-date">2012 – 2016</div>
+      </div>
+      <div class="item-subtitle">Bachelor of Technology in Information Technology &nbsp;<span class="item-location">(India)</span></div>
+    </div>
+  </div>
+
+  <!-- Technical Skills -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-cat">AI & ML Systems:</div>
+      <div class="skill-list">PyTorch, QLoRA/PEFT, Transformers, RAG, Mixture-of-Experts (MoE), BioClinicalBERT, FAISS, Multi-Agent Path Finding (CBS, A*)</div>
+      
+      <div class="skill-cat">Languages:</div>
+      <div class="skill-list">Java (Oracle Certified), Python, C++, JavaScript, SQL, HTML/CSS</div>
+      
+      <div class="skill-cat">Backend & Web:</div>
+      <div class="skill-list">FastAPI, Spring Boot, Spring Cloud, Hibernate, REST APIs, Microservices, React, Tailwind CSS, Gradio</div>
+      
+      <div class="skill-cat">Tools & DevOps:</div>
+      <div class="skill-list">Docker, Kubernetes, Git, Linux, Maven, CI/CD, AWS (EC2, S3), Oracle DB, Kaggle, HuggingFace</div>
+    </div>
+  </div>
+
+  <!-- Key Projects -->
+  <div class="section">
+    <div class="section-title">Featured Engineering & Research Projects</div>
+
+    <!-- Project 1 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">Sparse MoE-QLoRA for Danish Legal QA <span class="badge">PyTorch</span><span class="badge">MoE</span><span class="badge">QLoRA</span></div>
+        <div class="item-date">Personal Research Project</div>
+      </div>
+      <ul class="bullets">
+        <li>Engineered a 4-bit Quantized Low-Rank Adaptation (QLoRA) pipeline to fine-tune a 7B LLM for Danish legal domain QA.</li>
+        <li>Implemented centroid-based Sparse Mixture-of-Experts (MoE) routing using E5 embeddings paired with FAISS RAG retrieval.</li>
+        <li>Achieved 6.88 tokens/sec generation throughput and sub-5ms in-place VRAM adapter hot-swapping on a single Kaggle T4 GPU.</li>
+      </ul>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">Multi-Agent Coordination in Hospital Domain <span class="badge">Java</span><span class="badge">CBS</span><span class="badge">A* Search</span></div>
+        <div class="item-date">DTU 02285 Course Project</div>
+      </div>
+      <ul class="bullets">
+        <li>Developed a Java multi-agent path finding (MAPF) solver (<em>CudBSlvd</em>) for autonomous robot agents in the MAvis Hospital Domain grid world.</li>
+        <li>Implemented Hungarian matching for box-goal allocation, fast greedy priority orderings, and 3-phase box staging.</li>
+        <li>Built a Conflict-Based Search (CBS) repair engine with CAT bias, opportunistic bypass, Lemma-1 jump points, and segment replanning. Solved 25 of 69 benchmark levels.</li>
+      </ul>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">Multi-Modal Clinical Phenotyping System <span class="badge">PyTorch</span><span class="badge">FastAPI</span><span class="badge">FHIR R4</span></div>
+        <div class="item-date">Healthcare AI Project</div>
+      </div>
+      <ul class="bullets">
+        <li>Built a dual-encoder PyTorch pipeline pairing BioClinicalBERT for unstructured clinical notes with a custom Masked Lab-Test Transformer (MLTM) for numerical lab features on MIMIC-IV data (3,397 patient records, 25 conditions, 0.88 AUROC).</li>
+        <li>Developed a FastAPI inference service with SHAP lab importance, BERT attention scores, FHIR R4 bundle adapters, and Gradio web interface.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Professional Experience -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+
+    <!-- Role 1 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">Software Developer</div>
+        <div class="item-date">Jan 2023 – Dec 2023</div>
+      </div>
+      <div class="item-subtitle">Infinite Computer Solutions (Client: GE Healthcare) &nbsp;<span class="item-location">(Bengaluru, India)</span></div>
+      <ul class="bullets">
+        <li>Engineered internal license management software for hospital equipment (MRI and CT scanners), enabling staff to easily activate, update, and manage feature licenses without manual intervention.</li>
+        <li>Streamlined automated installation and upgrade tooling, reducing system downtime and manual overhead for active hospital scanners.</li>
+        <li>Collaborated across cross-functional engineering teams to ensure on-time delivery of annual software feature upgrades and security patches.</li>
+      </ul>
+    </div>
+
+    <!-- Role 2 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">Software Developer</div>
+        <div class="item-date">Feb 2019 – Jul 2022</div>
+      </div>
+      <div class="item-subtitle">Tech Mahindra (Client: Swiss Re) &nbsp;<span class="item-location">(Hyderabad, India / Zurich, Switzerland)</span></div>
+      <ul class="bullets">
+        <li>Developed <em>SwiftMX</em>, a transaction conversion tool mapping insurance business team requests into automated bond and security purchase orders via third-party financial tools (Apex).</li>
+        <li>Built testing and data migration utilities for TRAX application upgrades, verifying config transfer success rates to guarantee zero downtime.</li>
+        <li>Implemented custom encryption middleware routing TRAX payment files (salary and insurance disbursements) through multi-system networks (Swift) securely to banking institutions.</li>
+      </ul>
+    </div>
+
+    <!-- Role 3 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">Junior Software Engineer</div>
+        <div class="item-date">Sep 2016 – Jan 2019</div>
+      </div>
+      <div class="item-subtitle">Tata Consultancy Services (Client: American Express) &nbsp;<span class="item-location">(Hyderabad, India)</span></div>
+      <ul class="bullets">
+        <li>Developed online PDF credit statement generation features for American Express Mexico internet banking, replacing inaccessible XML formats.</li>
+        <li>Participated in full software lifecycle: requirements analysis, component building, integration testing, and production deployment.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Certifications & Languages -->
+  <div class="section" style="page-break-inside: avoid;">
+    <div class="section-title">Certifications & Languages</div>
+    <div style="font-size: 8.5pt; color: #334155; line-height: 1.45;">
+      <strong>Certifications:</strong> Oracle Certified Professional Java SE 11 Programmer &nbsp;|&nbsp; Lean Six Sigma Yellow Belt &nbsp;|&nbsp; TOEFL iBT (Score: 94/120)<br>
+      <strong>Languages:</strong> English (Fluent), Telugu (Native), Danish (Intermediate)
+    </div>
+  </div>
+
+</body>
+</html>
