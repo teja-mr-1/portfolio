@@ -12,6 +12,14 @@ export default function Home() {
     navigate(`/project/${projectId}`);
   };
 
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <main className="w-full overflow-x-hidden bg-white">
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
@@ -24,9 +32,9 @@ export default function Home() {
               Teja
             </div>
             <div className="hidden md:flex items-center gap-2">
-              <a href="#projects" className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-sm transition-all">
+              <button onClick={scrollToProjects} className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-sm transition-all">
                 Projects
-              </a>
+              </button>
               <a
                 href="./Maddela_Raviteja_CV.pdf"
                 target="_blank"
@@ -83,12 +91,12 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="#projects" className="group px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-center flex items-center justify-center gap-2">
+                <button onClick={scrollToProjects} className="group px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 text-center flex items-center justify-center gap-2">
                   View My Projects
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </button>
                 <a 
                   href="./Maddela_Raviteja_CV.pdf"
                   target="_blank"
