@@ -6,13 +6,13 @@
     <style>
         @page {
             size: A4;
-            margin: 22mm 20mm 20mm 20mm;
+            margin: 20mm 18mm 18mm 18mm;
         }
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             color: #2d3748;
-            line-height: 1.6;
-            font-size: 13.5px;
+            line-height: 1.55;
+            font-size: 13px;
             background: #ffffff;
         }
         .container {
@@ -25,11 +25,11 @@
             font-weight: 700;
             border-bottom: 2px solid #3182ce;
             padding-bottom: 8px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             letter-spacing: -0.3px;
         }
         p {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             text-align: justify;
         }
         .project-list {
@@ -52,8 +52,8 @@
         .portfolio-box {
             background-color: #ebf8ff;
             border-left: 4px solid #3182ce;
-            padding: 12px 16px;
-            margin: 16px 0;
+            padding: 10px 14px;
+            margin: 14px 0;
             border-radius: 4px;
         }
         .portfolio-box a {
@@ -62,16 +62,16 @@
             text-decoration: none;
         }
         .signature {
-            margin-top: 24px;
+            margin-top: 20px;
             border-top: 1px solid #e2e8f0;
-            padding-top: 14px;
-            font-size: 12.5px;
+            padding-top: 12px;
+            font-size: 12px;
             color: #4a5568;
             line-height: 1.5;
         }
         .signature strong {
             color: #1a202c;
-            font-size: 14.5px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -82,17 +82,17 @@
         <p>I am studying MSc Computer Science at DTU and I was glad to read your job posting for Nordic Well Group—especially your note asking to see real projects, GitHub links, and practical work process. I am very interested in joining your digital team in Nordhavn as a Student Assistant.</p>
         
         <p><strong>My Background & Project Work:</strong><br>
-        Coming from a software development background in healthcare and finance, I am used to writing clean Python code, querying SQL databases, and working with APIs. In my academic studies at DTU and recent projects, I have worked with:</p>
+        Coming from a software development background in healthcare and finance, I am used to writing clean Python code, querying SQL databases, and building REST API integrations. In my academic studies at DTU and personal projects, I have worked on:</p>
         
         <div class="project-list">
             <div class="project-item">
-                <span class="project-title">1. Weather Route Safety Tool:</span> Built a Python script integrating weather APIs to check road conditions along route coordinates.
+                <span class="project-title">1. Weather Route Safety Tool:</span> Built a Python script with FastAPI that fetches weather API data (temperature, rain, ice risk) along route GPS waypoints, extracts forecast JSON data, and visualizes route hazards on an interactive map.
             </div>
             <div class="project-item">
-                <span class="project-title">2. Sparse MoE-QLoRA Study:</span> Academic research project exploring LLM fine-tuning and document retrieval methods.
+                <span class="project-title">2. Sparse MoE-QLoRA Study:</span> DTU academic research project evaluating Sparse Mixture-of-Experts routing combined with QLoRA parameter-efficient fine-tuning and FAISS vector retrieval for document search.
             </div>
             <div class="project-item">
-                <span class="project-title">3. Clinical Text Processing:</span> Used NLP and BioClinicalBERT models to extract and structure information from unstructured clinical text.
+                <span class="project-title">3. Clinical Text Processing:</span> Processed clinical discharge notes from the MIMIC-IV dataset using BioClinicalBERT models and PyTorch to classify patient diagnoses and extract structured medical concepts.
             </div>
         </div>
         
