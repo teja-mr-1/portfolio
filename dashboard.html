@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Tracker | Raviteja Maddela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-indigo: #6366f1;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --purple: #a855f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 32px 24px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .title-group h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-group p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .user-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      backdrop-filter: blur(12px);
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: #fff;
+    }
+
+    .user-info {
+      font-size: 13px;
+    }
+
+    .user-info .name {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .user-info .sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .stat-sub {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--success);
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 16px 10px 40px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .filter-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-tab.active {
+      background: var(--accent-indigo);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Table Container */
+    .table-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.8);
+      padding: 16px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--card-border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 18px 20px;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Cell Content Styles */
+    .role-cell {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .role-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .company-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .company-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .company-name {
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    .company-location {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Status Badges */
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-status.applied {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-status.no-response {
+      background: rgba(148, 163, 184, 0.15);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .badge-status.email-sent {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .badge-status.outreach {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .badge-status.under-review {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-status.rejected {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-status.draft {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .date-cell {
+      font-size: 13px;
+      font-weight: 500;
+      color: #cbd5e1;
+      white-space: nowrap;
+    }
+
+    .deadline-cell {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f59e0b;
+      white-space: nowrap;
+    }
+
+    .comm-cell {
+      max-width: 360px;
+    }
+
+    .comm-date {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .comm-text {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="title-group">
+        <h1>Job Application Dashboard</h1>
+        <p>Real-time status tracking & outreach log for DTU Master's student roles</p>
+      </div>
+      <div class="user-badge">
+        <div class="user-avatar">RM</div>
+        <div class="user-info">
+          <div class="name">Raviteja Maddela</div>
+          <div class="sub">MSc Computer Science, DTU</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Applications</div>
+        <div class="stat-value" id="stat-total">20</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-content">
+          <div class="stat-label">Screening After Deadline</div>
+          <div class="stat-value" id="stat-screening" style="color: #34d399;">3 <span class="stat-sub" style="color: #34d399;">Under Review</span></div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">No Response</div>
+        <div class="stat-value" id="stat-no-response" style="color: #94a3b8;">13 <span class="stat-sub" style="color: #94a3b8;">Pending</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Rejected</div>
+        <div class="stat-value" id="stat-rejected" style="color: #f87171;">4 <span class="stat-sub" style="color: #f87171;">Closed</span></div>
+      </div>
+    </section>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by Job Role or Company...">
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all" id="tab-all">All (20)</button>
+        <button class="filter-tab" data-filter="screening" id="tab-screening">Screening After Deadline (5)</button>
+        <button class="filter-tab" data-filter="no-response" id="tab-no-response">No Response (9)</button>
+        <button class="filter-tab" data-filter="rejected" id="tab-rejected">Rejected (6)</button>
+        <button class="filter-tab" data-filter="draft" id="tab-draft">Drafts (1)</button>
+      </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="table-card">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th id="th-role">Job Role ↕</th>
+              <th id="th-company">Company ↕</th>
+              <th id="th-status">Status ↕</th>
+              <th id="th-applied">Applied / Posted Date ↕</th>
+              <th id="th-deadline">Application Deadline ↕</th>
+              <th id="th-comm">Last Communication</th>
+            </tr>
+          </thead>
+          <tbody id="applicationsTableBody">
+            <!-- Dynamic Rows Injected by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Portfolio Dashboard &nbsp;|&nbsp; Master’s Student at DTU &nbsp;|&nbsp; <a href="https://teja-mr-1.github.io/portfolio/" target="_blank">View Live Portfolio</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Initial Application Data - All 20 Portfolio Applications Verified with Gmail & Motivation Documents
+    const initialApplications = [
+      {
+        id: 1,
+        role: "AI Developer – Hands-on Student Assistant",
+        roleSub: "Low-code & Pro-code AI Agents, Azure, Copilot Studio",
+        company: "FDM",
+        location: "Lyngby (Next to DTU Campus)",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "10 Sep 2026",
+        deadline: "20 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Application follow-up email prepared."
+      },
+      {
+        id: 2,
+        role: "AI & Automation Developer - Studiejob",
+        roleSub: "Power Platform, Copilot Studio, Python & Power BI",
+        company: "Carl Ras",
+        location: "Herlev (Walkable from Husum Torv)",
+        status: "In Dialogue",
+        statusClass: "under-review",
+        appliedDate: "10 Sep 2026",
+        deadline: "25 Sep 2026",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Direct email from Peter Bak Torjusen (Director): Inquired on Danish language skills. Honest B1 reply sent."
+      },
+      {
+        id: 3,
+        role: "Student Assistant - Digitalization (DDI)",
+        roleSub: "IT Governance, ServiceNow, Python & Power BI",
+        company: "Novo Nordisk",
+        location: "Drug Delivery Innovation (GMS)",
+        status: "Screening After Deadline",
+        statusClass: "under-review",
+        appliedDate: "10 Sep 2026",
+        deadline: "18 Sep 2026",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Email response from Anna Bjerg Jessen (Director): Reviewing applications & conducting interviews before deadline."
+      },
+      {
+        id: 4,
+        role: "Data Engineering Intern — Quality Data Hub (QDH)",
+        roleSub: "Enterprise Cloud Data Pipelines, AWS, Databricks & SQL",
+        company: "Novo Nordisk",
+        location: "Quality Analytics (Bagsværd / CPH)",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "07 Sep 2026",
+        deadline: "24 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Application follow-up email prepared."
+      },
+      {
+        id: 5,
+        role: "Student Assistant, Data and AI Enablement",
+        roleSub: "AI Community, Low-code Agents & SharePoint",
+        company: "Novonesis",
+        location: "Hørsholm & Valby Offices",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "10 Sep 2026",
+        deadline: "13 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Application follow-up email prepared."
+      },
+      {
+        id: 6,
+        role: "Student Assistant - Data Privacy",
+        roleSub: "Dataflow Mapping, TIAs, LIAs & GRC Systems",
+        company: "Ascendis Pharma",
+        location: "Hellerup (Tuborg Boulevard)",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "10 Sep 2026",
+        deadline: "22 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Application follow-up email prepared."
+      },
+      {
+        id: 7,
+        role: "Student Assistant - PMO",
+        roleSub: "Program Governance, Teams & Jira Administration",
+        company: "Scan Global Logistics",
+        location: "Cph Headquarters",
+        status: "Screening After Deadline",
+        statusClass: "under-review",
+        appliedDate: "10 Sep 2026",
+        deadline: "24 Sep 2026",
+        lastCommDate: "10 Sep 2026 (10:21)",
+        lastCommText: "Gmail Confirmation & Script: Candidate screening takes place after application deadline."
+      },
+      {
+        id: 8,
+        role: "Student Assistant - Property & Projects",
+        roleSub: "Digitalization & System Governance",
+        company: "AAB",
+        location: "Copenhagen",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "10 Sep 2026",
+        deadline: "28 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Application follow-up email prepared."
+      },
+      {
+        id: 9,
+        role: "Research Specialist (IT Recruitment)",
+        roleSub: "Technical Screening, Candidate Sourcing & IT Profiles",
+        company: "Bloom",
+        location: "Ballerup",
+        status: "Rejected",
+        statusClass: "rejected",
+        appliedDate: "29 Aug 2026",
+        deadline: "25 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Rejection reason: Danish language requirement (No Danish)."
+      },
+      {
+        id: 10,
+        role: "IT/OT Studentermedhjælper",
+        roleSub: "Linux/Windows Systems, Networking & Power BI",
+        company: "Hillerød Forsyning",
+        location: "Hillerød",
+        status: "Rejected",
+        statusClass: "rejected",
+        appliedDate: "05 Sep 2026",
+        deadline: "22 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Rejection reason: Danish language requirement (No Danish)."
+      },
+      {
+        id: 11,
+        role: "Student Assistant - Property & Facility Management",
+        roleSub: "GIS Datasets, Data Cleanup & Power BI",
+        company: "Hvidovre Municipality",
+        location: "Hvidovre",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "10 Sep 2026",
+        deadline: "27 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Phone call attempt: Didn't lift the phone."
+      },
+      {
+        id: 12,
+        role: "AI Student Assistant",
+        roleSub: "Python Backends, Vector Retrieval & LLM Fine-Tuning",
+        company: "Nordic Well Group",
+        location: "Copenhagen",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "29 Aug 2026",
+        deadline: "24 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Application follow-up email prepared."
+      },
+      {
+        id: 13,
+        role: "Student Assistant - Counter-Terror Operations (KTO)",
+        roleSub: "Data Retrieval, Text Analytics & Security Clearance",
+        company: "PET",
+        location: "Søborg",
+        status: "Rejected",
+        statusClass: "rejected",
+        appliedDate: "31 Aug 2026",
+        deadline: "29 Sep 2026",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Email response from Helene (HR Partner): Rejection due to Danish fluency requirement."
+      },
+      {
+        id: 14,
+        role: "Student Assistant in Data & IT",
+        roleSub: "System Admin, User Access & Power BI",
+        company: "STPS",
+        location: "Islands Brygge / Copenhagen",
+        status: "Rejected",
+        statusClass: "rejected",
+        appliedDate: "05 Sep 2026",
+        deadline: "20 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Rejection reason: Danish language requirement (No Danish)."
+      },
+      {
+        id: 15,
+        role: "Software Assistant",
+        roleSub: "Automotive Software, Diagnostics & System Updates",
+        company: "Semler Mobility",
+        location: "Søborg",
+        status: "Screening After Deadline",
+        statusClass: "under-review",
+        appliedDate: "05 Sep 2026",
+        deadline: "26 Sep 2026",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Email response from Mads Peter Kierulff (Head of Aftersales): Received follow-up, will get back."
+      },
+      {
+        id: 16,
+        role: "Student Employee - Financial & Debt Counseling",
+        roleSub: "M365 Support, Survey Tools & Volunteer IT",
+        company: "Forbrugerrådet Tænk",
+        location: "Nørrebro / Copenhagen",
+        status: "Rejected",
+        statusClass: "rejected",
+        appliedDate: "05 Sep 2026",
+        deadline: "23 Sep 2026",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Email response from Ninna Juliane Greve: Rejection due to Danish fluency requirement."
+      },
+      {
+        id: 17,
+        role: "UX Student Assistant - Digitale Kanaler",
+        roleSub: "Figma Prototyping, skat.dk & User Testing",
+        company: "UFST",
+        location: "Frederiksberg",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "05 Sep 2026",
+        deadline: "28 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Phone call attempt: Didn't lift the phone."
+      },
+      {
+        id: 18,
+        role: "Student Assistant - Digital Business",
+        roleSub: "Data Analytics & Process Improvement",
+        company: "Dansk Erhverv",
+        location: "Børsen / Copenhagen",
+        status: "Rejected",
+        statusClass: "rejected",
+        appliedDate: "09 Sep 2026",
+        deadline: "21 Sep 2026",
+        lastCommDate: "12 Sep 2026",
+        lastCommText: "Rejection reason: Danish language requirement (No Danish)."
+      },
+      {
+        id: 19,
+        role: "Student Worker — IT Solutions in Quality",
+        roleSub: "Quality Reporting Automation, SAP Data Extraction & Power BI",
+        company: "Everllence",
+        location: "Copenhagen / Holeby",
+        status: "Screening After Deadline",
+        statusClass: "under-review",
+        appliedDate: "31 Aug 2026",
+        deadline: "20 Sep 2026",
+        lastCommDate: "31 Aug 2026",
+        lastCommText: "Motivation PDF & Application submitted to Jakob Ejsenhardt (Quality Manager). Candidate screening takes place after application deadline."
+      },
+      {
+        id: 20,
+        role: "Student Worker — Marine Engine Digital Twin (Python)",
+        roleSub: "Real-time Engine Simulations & Python Automation Framework",
+        company: "Everllence",
+        location: "Copenhagen / Roskilde",
+        status: "Screening After Deadline",
+        statusClass: "under-review",
+        appliedDate: "06 Sep 2026",
+        deadline: "25 Sep 2026",
+        lastCommDate: "06 Sep 2026 (23:14)",
+        lastCommText: "Verified IT-Jobbank Posting (h1694252) & Gmail Confirmation. Direct outreach to PhD Researcher Bruce Durbano. Candidate screening takes place after application deadline."
+      },
+      {
+        id: 21,
+        role: "Juniorkonsulenter til AI, læring og kompetenceudvikling",
+        roleSub: "AI, Learning & Competence Development in DSB's Driftscenter",
+        company: "DSB",
+        location: "Høje Taastrup / CPH",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 11 Sep 2026",
+        deadline: "27 Sep 2026",
+        link: "https://dsb.jobs.hr.cloud.sap/job/Tre-Juniorkonsulenter-til-AI%2C-l%C3%A6ring-og-kompetenceudvikling-i-DSB's-Driftscenter-%28studerende%29/491-da_DK?applySourceOverride=Jobindex.dk&utm_campaign=jobindex&utm_source=jobindex",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Motivation PDF created (DSB_AI_Juniorkonsulent_Motivation.pdf). Application in draft / preparing."
+      },
+      {
+        id: 22,
+        role: "Student Assistant - Data, AI & Model Implementation",
+        roleSub: "Python, R, Data Cleaning & Financial Model Implementation",
+        company: "CBS (BIGFI)",
+        location: "Frederiksberg / Copenhagen",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "16 Sep 2026",
+        deadline: "30 Sep 2026",
+        link: "https://candidate.hr-manager.net/ApplicationForm/SinglePageApplicationForm.aspx?cid=3010&ProjectId=168585&DepartmentId=19870&MediaId=5125",
+        lastCommDate: "16 Sep 2026",
+        lastCommText: "Application submitted via HR-Manager. Awaiting initial response / no contact yet."
+      },
+      {
+        id: 23,
+        role: "Digital Data Assistant: AI-Driven Insights & BI",
+        roleSub: "Power BI, Databricks, Python & AI Workflows",
+        company: "GEA Process Engineering",
+        location: "Søborg",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "16 Sep 2026",
+        deadline: "15 Sep 2026",
+        link: "https://gea.wd3.myworkdayjobs.com/GEACareers/job/Soeborg/Digital-Data-Assistant--student-position-_JR-0040629/apply",
+        lastCommDate: "16 Sep 2026",
+        lastCommText: "Application submitted via Workday. Awaiting initial response / no contact yet."
+      },
+      {
+        id: 24,
+        role: "Student Assistant - Global Customer Experience (GCX)",
+        roleSub: "Operations Support, Automated Workflows, Process Documentation & AI-Assisted Tools",
+        company: "Lundbeck A/S",
+        location: "Valby / Copenhagen",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "16 Sep 2026",
+        deadline: "20 Sep 2026",
+        link: "https://jobs.lundbeck/job/Copenhagen-Student-Assistant-Global-Customer-Experience-%28GCX%29-Dani/1435414633/",
+        lastCommDate: "16 Sep 2026",
+        lastCommText: "Application submitted via Lundbeck Careers. Awaiting initial response / no contact yet."
+      },
+      {
+        id: 25,
+        role: "Student Assistant - Digital Content Creation & Storytelling",
+        roleSub: "Digital Visuals, Generative AI Tools & Engineering Stories",
+        company: "Vattenfall A/S",
+        location: "Kolding / CPH",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 07 Sep 2026",
+        deadline: "28 Sep 2026",
+        link: "https://careers.vattenfall.com/",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Grabbed from Vattenfall Careers Portal (Business Area Wind). In draft / preparing."
+      },
+      {
+        id: 26,
+        role: "Student Assistant – Marketing Analytics & Digital Performance",
+        roleSub: "Google Analytics, Performance Tracking, SEO & Data Insights",
+        company: "ROCKWOOL A/S",
+        location: "Hedehusene",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 06 Sep 2026",
+        deadline: "30 Sep 2026",
+        link: "https://www.rockwool.com/group/about-us/careers/",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Grabbed from Rockwool Careers Portal (Technical Insulation Team). In draft / preparing."
+      },
+      {
+        id: 27,
+        role: "Junior Consultant - Data & AI Team",
+        roleSub: "AI Advisory, Generative AI PoCs, LLMs & Python Solutions",
+        company: "The Tech Collective",
+        location: "Hellerup (Strandvejen 54)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 05 Sep 2026",
+        deadline: "26 Sep 2026",
+        link: "https://thetechcollective.eu/careers",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Grabbed from The Tech Collective (Implement Consulting Group). In draft / preparing."
+      },
+      {
+        id: 28,
+        role: "Internship — Software Developer (Spring 2027)",
+        roleSub: "Java, Python, .NET, Angular, Docker, Kubernetes & Scrum",
+        company: "Systematic A/S",
+        location: "Copenhagen / Aarhus",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 12 Sep 2026",
+        deadline: "15 Oct 2026",
+        link: "https://systematic.com/en-gb/careers/jobs/",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Grabbed from Systematic Careers. 5-month developer internship. In draft / preparing."
+      },
+      {
+        id: 29,
+        role: "Student Assistant - Product Management (Market Intelligence)",
+        roleSub: "Market Intelligence, PIM Systems, Business Analytics & Power BI",
+        company: "ROCKWOOL Group",
+        location: "Hedehusene",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 10 Sep 2026",
+        deadline: "30 Sep 2026",
+        link: "https://www.rockwool.com/group/about-us/careers/",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Grabbed from Rockwool Careers Portal (RTI Product Management). In draft / preparing."
+      },
+      {
+        id: 30,
+        role: "Student Assistant – Sales (Part-time)",
+        roleSub: "FMCG Sales Support, Power BI Analytics & Campaign Execution",
+        company: "Haleon Denmark",
+        location: "Vallensbæk",
+        status: "No Response",
+        statusClass: "no-response",
+        appliedDate: "16 Sep 2026",
+        deadline: "09 Oct 2026",
+        link: "https://www.haleon.com/careers/",
+        lastCommDate: "16 Sep 2026",
+        lastCommText: "Application submitted (Haleon_Sales_Student_Assistant_Motivation.pdf). Awaiting initial response / no contact yet."
+      },
+      {
+        id: 31,
+        role: "Student Assistant, Technology Procurement",
+        roleSub: "IT Procurement, Vendor Management, Licensing & Procurement Analytics",
+        company: "Ramboll / Tech Procurement",
+        location: "Copenhagen (Hannemanns Allé)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 09 Sep 2026",
+        deadline: "30 Sep 2026",
+        link: "https://www.ramboll.com/careers",
+        lastCommDate: "14 Sep 2026",
+        lastCommText: "Grabbed from Careers Portal. Technology Procurement team. In draft / preparing."
+      },
+      {
+        id: 32,
+        role: "Student Assistant – Supply Chain Analytics",
+        roleSub: "SQL, Power BI Dashboards, Order Patterns & Supply Risk Analysis",
+        company: "Hamamatsu Photonics (NKT)",
+        location: "Birkerød",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: 10 Sep 2026",
+        deadline: "As soon as possible",
+        link: "https://photonics.wd103.myworkdayjobs.com/Job_Index/job/Birkerd-Capital-Region-Denmark/Student-Assistant---Supply-Chain-Analytics_JR100501-2",
+        lastCommDate: "16 Sep 2026",
+        lastCommText: "Exact Workday posting verified (JR100501). Motivation PDF created (Hamamatsu_Supply_Chain_Analytics_Motivation.pdf). Ready to apply."
+      },
+      {
+        id: 33,
+        role: "Student Assistant for Nordic Support",
+        roleSub: "Nordic IT Helpdesk, Hardware/Software Setup & User Support",
+        company: "Deloitte Denmark",
+        location: "Copenhagen (Weidekampsgade 6)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "As soon as possible",
+        link: "https://jobs.smartrecruiters.com/Deloitte",
+        lastCommDate: "16 Sep 2026",
+        lastCommText: "Public SmartRecruiters post closed. Senior Manager Ragid Maarouf & Recruiter Nadiia Novikova (nshamarina@deloitte.dk) identified for direct outreach."
+      },
+      {
+        id: 34,
+        role: "Student Assistant (Applied Multimodal ML)",
+        roleSub: "Multimodal Data Operations, Evaluation Benchmarking & Python Tooling",
+        company: "Interhuman AI (Antler)",
+        location: "Copenhagen",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "As soon as possible (Ongoing)",
+        link: "https://www.jobleads.com/dk/jobs/l/K%C3%B8benhavn/q/Student%20Assistant%20Applied%20Multimodal%20ML?promotedJobs=external-bc379b13197c9505642852bc57f39522",
+        lastCommDate: "17 Sep 2026",
+        lastCommText: "Interhuman AI verified. BehaviorBench project built & deployed to portfolio. 1-page Motivation & CV PDFs ready."
+      },
+      {
+        id: 35,
+        role: "Student Assistant in People Analytics",
+        roleSub: "Workforce Data Insights, HR Reporting & Analytical Solutions",
+        company: "Danske Bank",
+        location: "Copenhagen K",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "18 Sep 2026 (Tomorrow 20:59)",
+        link: "https://danskebank.com/careers",
+        lastCommDate: "17 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Urgent deadline tomorrow."
+      },
+      {
+        id: 36,
+        role: "Engineering Lab Assistant (Student) - Hands-on Support",
+        roleSub: "Teaching Lab Maintenance, Hardware Equipment, Moodle & Administration",
+        company: "Aalborg University",
+        location: "Copenhagen (Sydhavn Campus)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing (Start: 15 Nov 2026)",
+        link: "https://www.aau.dk/om-aau/organisation/ledige-stillinger",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled. Focused on lab organization, hardware setup and Moodle."
+      },
+      {
+        id: 37,
+        role: "Software Engineer Student Assistant — Nexus Data Systems",
+        roleSub: "Fuel Efficiency Analytics, IoT Sensor Normalization, C# & SQL",
+        company: "TORM",
+        location: "Hellerup / Gentofte (Hybrid)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing",
+        link: "https://www.torm.com/careers",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled. Strong alignment with sensor normalization and Denmark-India cross-border engineering."
+      },
+      {
+        id: 38,
+        role: "Student Assistant — International Partnerships",
+        roleSub: "Nordic Five Tech Alliance, Data Analysis, Surveys & Presentation Support",
+        company: "DTU (Technical University of Denmark)",
+        location: "Lyngby Campus (Building 101A / Hybrid)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing",
+        link: "https://www.dtu.dk/english/about/job-and-career/vacant-positions",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Grounded DTU student English addressing Ulla Høeberg Jørgensen."
+      },
+      {
+        id: 39,
+        role: "Student Assistant — Tech Portfolio Management",
+        roleSub: "Power BI, DAX, Datamart SQL Views & Tech Portfolio Governance",
+        company: "Ørsted",
+        location: "Gentofte (Hybrid, 20 hrs/week)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "30 Sep 2026",
+        link: "https://orsted.com/en/careers",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Strong alignment with Power BI, DAX and datamart SQL views."
+      },
+      {
+        id: 40,
+        role: "Student Assistant — Netcompany Institute",
+        roleSub: "AI & Digitalization Policy Analysis in Europe, Eurostat/OECD Data, Python & Excel",
+        company: "Netcompany",
+        location: "Copenhagen (16 hrs/week)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing",
+        link: "https://www.netcompany.com/careers",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Strong alignment with public data structuring, statistical verification and AI policy."
+      },
+      {
+        id: 41,
+        role: "Student Assistant — Commercial Platforms & Operations",
+        roleSub: "Global Commercial Excellence, User Access, Licenses & Platform Usage Analytics",
+        company: "WS Audiology",
+        location: "Lynge (Hybrid, 15-20 hrs/week)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing",
+        link: "https://careersemea.wsa.com/",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Grounded Danish student English with 20+ months study horizon and platform administration alignment."
+      },
+      {
+        id: 42,
+        role: "Analyst (Student Assistant) — Talent Analytics & AI",
+        roleSub: "People Analytics, Advanced Excel Modeling, Power BI Dashboards & AI Workflows",
+        company: "Copenhagen Infrastructure Partners",
+        location: "Copenhagen (20-25 hrs/week, DKK 165k-248k)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing",
+        link: "https://www.cip.com/",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Grounded Danish student English, portfolio linked, 20-25 hrs alignment."
+      },
+      {
+        id: 43,
+        role: "Student Assistant — IT & Digital",
+        roleSub: "End-User Support, Onboarding, License Management, CISO Security & AI Initiatives",
+        company: "Hemab Therapeutics",
+        location: "Copenhagen (15-20 hrs/week)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing (Two positions open)",
+        link: "https://hemab.com/careers",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Grounded Danish student English, clinical data project & portfolio linked."
+      },
+      {
+        id: 44,
+        role: "Campaign Coordinator — Student Position",
+        roleSub: "Boozt Media Partnership (BMP), Cross-Functional Marketing & Retail Media Activations",
+        company: "Boozt",
+        location: "Copenhagen HQ (Krystallen, 20 hrs/week)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing (Start: Oct 2026)",
+        link: "https://www.booztfashion.com/careers",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. Grounded Danish student English, portfolio linked, legal right to work confirmed."
+      },
+      {
+        id: 45,
+        role: "Student Software Engineer — Omnidocs Create & Integrations",
+        roleSub: ".NET, C#, Blazor, Integrations & Agentic Engineering Workflows",
+        company: "Omnidocs Group",
+        location: "Christianshavn, Copenhagen (12-15 hrs/week, DKK 207k-262k)",
+        status: "Draft / Preparing",
+        statusClass: "draft",
+        appliedDate: "Posted: Sep 2026",
+        deadline: "Ongoing",
+        link: "https://omnidocs.com/careers",
+        lastCommDate: "21 Sep 2026",
+        lastCommText: "Tailored 1-page Motivation Letter and 1-page CV PDFs compiled and verified. High-interest role, strong .NET/Java bridge, agentic engineering focus."
+      }
+    ];
+
+    let currentData = [...initialApplications];
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    // Render Stats
+    function updateStats() {
+      const appliedItems = currentData.filter(item => item.statusClass !== 'draft');
+      const totalCount = appliedItems.length;
+      const screeningCount = currentData.filter(item => item.statusClass === 'under-review').length;
+      const noResponseCount = currentData.filter(item => item.statusClass === 'no-response').length;
+      const rejectedCount = currentData.filter(item => item.statusClass === 'rejected').length;
+      const draftCount = currentData.filter(item => item.statusClass === 'draft').length;
+
+      document.getElementById('stat-total').innerText = totalCount;
+      document.getElementById('stat-screening').innerHTML = `${screeningCount} <span class="stat-sub" style="color: #34d399;">Under Review</span>`;
+      document.getElementById('stat-no-response').innerHTML = `${noResponseCount} <span class="stat-sub" style="color: #94a3b8;">Pending</span>`;
+      document.getElementById('stat-rejected').innerHTML = `${rejectedCount} <span class="stat-sub" style="color: #f87171;">Closed</span>`;
+
+      // Dynamically update Filter Tab Button Labels with exact counts
+      if (document.getElementById('tab-all')) document.getElementById('tab-all').innerText = `All (${totalCount})`;
+      if (document.getElementById('tab-screening')) document.getElementById('tab-screening').innerText = `Screening After Deadline (${screeningCount})`;
+      if (document.getElementById('tab-no-response')) document.getElementById('tab-no-response').innerText = `No Response (${noResponseCount})`;
+      if (document.getElementById('tab-rejected')) document.getElementById('tab-rejected').innerText = `Rejected (${rejectedCount})`;
+      if (document.getElementById('tab-draft')) document.getElementById('tab-draft').innerText = `Drafts (${draftCount})`;
+    }
+
+    // Render Table
+    function renderTable() {
+      const tbody = document.getElementById('applicationsTableBody');
+      tbody.innerHTML = '';
+
+      const filtered = currentData.filter(item => {
+        const matchesFilter = 
+          currentFilter === 'all' ? (item.statusClass !== 'draft') :
+          currentFilter === 'screening' ? (item.statusClass === 'under-review') :
+          currentFilter === 'no-response' ? (item.statusClass === 'no-response') :
+          currentFilter === 'rejected' ? (item.statusClass === 'rejected') :
+          currentFilter === 'draft' ? (item.statusClass === 'draft') : true;
+
+        const matchesSearch = 
+          item.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.location.toLowerCase().includes(searchQuery.toLowerCase());
+
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6">
+              <div class="empty-state">
+                <p style="font-size: 16px; font-weight: 600;">No matching applications found</p>
+                <p style="font-size: 13px; margin-top: 4px;">Try searching for a different company or resetting your filters.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const tr = document.createElement('tr');
+        const logoInitials = item.company.substring(0, 2).toUpperCase();
+        const roleLinkHTML = item.link ? `<a href="${item.link}" target="_blank" style="color: #6366f1; font-weight: 600; font-size: 11px; margin-left: 6px; text-decoration: underline;">🔗 View Job Posting</a>` : '';
+
+        tr.innerHTML = `
+          <td>
+            <div class="role-cell">${item.role} ${roleLinkHTML}</div>
+            <div class="role-sub">${item.roleSub}</div>
+          </td>
+          <td>
+            <div class="company-cell">
+              <div class="company-logo">${logoInitials}</div>
+              <div>
+                <div class="company-name">${item.company}</div>
+                <div class="company-location">📍 ${item.location}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="badge-status ${item.statusClass}">
+              <span class="status-dot"></span>
+              ${item.status}
+            </span>
+          </td>
+          <td class="date-cell">
+            📅 ${item.appliedDate}
+          </td>
+          <td class="deadline-cell">
+            ⏳ ${item.deadline}
+          </td>
+          <td class="comm-cell">
+            <div class="comm-date">${item.lastCommDate}</div>
+            <div class="comm-text">${item.lastCommText}</div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Event Listeners
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderTable();
+    });
+
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+        currentFilter = e.target.getAttribute('data-filter');
+        renderTable();
+      });
+    });
+
+    // Initial Load
+    updateStats();
+    renderTable();
+  </script>
+</body>
+</html>
